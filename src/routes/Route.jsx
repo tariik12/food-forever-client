@@ -3,7 +3,6 @@ import Main from "../Layout/Main";
 import Home from "../pages/Home/Home/Home";
 import RecipesLayout from "../Layout/RecipesLayout/RecipesLayout";
 import ViewDetails from "../pages/Home/ViewDetails/ViewDetails";
-import LoginRegister from "../Layout/LoginRegister/LoginRegister";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Blog from "../pages/Home/Home/Blog/Blog";
