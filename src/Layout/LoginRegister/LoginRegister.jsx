@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { Outlet } from 'react-router-dom';
 const LoginRegister = () => {
     return (
-        <div>
-            <h1>login register</h1>
+        <div>     
+            <Outlet></Outlet>
         </div>
     );
 };
