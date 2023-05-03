@@ -6,6 +6,8 @@ import ViewDetails from "../pages/Home/ViewDetails/ViewDetails";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Blog from "../pages/Home/Home/Blog/Blog";
+import PrivateRoute from "./PrivateRoute";
+import TermsAndCondition from "../pages/Home/Shared/TermsAndCondition/TermsAndCondition";
 
 
 const router = createBrowserRouter ([
@@ -29,6 +31,11 @@ const router = createBrowserRouter ([
             {
                 path:'/register',
                 element:<Register></Register>
+            },
+            {
+                path:'/terms',
+                element:<TermsAndCondition></TermsAndCondition>
+
             }
         ]
     },
@@ -38,7 +45,7 @@ const router = createBrowserRouter ([
         children:[
             {
                 path:':id',
-                element:<ViewDetails></ViewDetails>,
+                element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
                 loader:({params}) =>fetch(`http://localhost:5000/chefs/${params.id}`)
             }
         ]

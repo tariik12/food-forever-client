@@ -1,12 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
  
 
 const Login = () => {
   const {loginUser} = useContext(AuthContext)
+  const [accept,setAccept] = useState(false);
 
+  const handleAccept = event =>{
+    setAccept(event.target.checked)
+  }
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location)
+  const from = location?.state?.from?.pathname || '/'
   const handleLogin = event =>{
     event.preventDefault()
     const form = event.target;
@@ -15,6 +23,7 @@ const Login = () => {
     loginUser(email,password)
     .then((userCredential) => {
       const user = userCredential.user;
+      navigate(from, {replace:true})
       console.log(user)
     })
     .catch((error) => {
@@ -39,12 +48,12 @@ const Login = () => {
           <Form.Control type="password" name='password' placeholder="Please Enter Your Password" />
         </Form.Group>
         <Form.Group className="mb-3 d-flex justify-content-between" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" onClick={handleAccept} label={<>Accept <Link to='/terms'>terms and conditions</Link></>} />
           <Form.Text className="text-muted">
           New member? <Link to='/register' className='text-decoration-none text-info'>Register here.</Link> 
           </Form.Text>
         </Form.Group>
-        <Button className='w-100' variant="info" type="submit">
+        <Button className='w-100' variant="info" type="submit" disabled={!accept}>
           Submit
         </Button> 
         
