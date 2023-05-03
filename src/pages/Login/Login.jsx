@@ -1,22 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+ 
 
 const Login = () => {
+  const {loginUser} = useContext(AuthContext)
+
+  const handleLogin = event =>{
+    event.preventDefault()
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    loginUser(email,password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log(user)
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode,errorMessage)
+    });
+  }
     return (
         <Card className='container mx-auto m-5 p-5 w-50 '>
             <Card.Title className='text-center'>Welcome! Please Login to continue.</Card.Title>
 
-            <Form className=' '>
+            <Form onSubmit={handleLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Please  Enter Your email" />
+          <Form.Control type="email" name='email' placeholder="Please  Enter Your email" />
           
         </Form.Group>
   
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Please Enter Your Password" />
+          <Form.Control type="password" name='password' placeholder="Please Enter Your Password" />
         </Form.Group>
         <Form.Group className="mb-3 d-flex justify-content-between" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />

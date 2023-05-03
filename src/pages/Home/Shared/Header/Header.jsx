@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../provider/AuthProvider';
+import { FaUserCircle } from 'react-icons/fa';
 
 const Header = () => {
-    const user = null;
+    const {user} = useContext(AuthContext) ;
     return (
              <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -20,6 +22,7 @@ const Header = () => {
           </Nav>
        
         </Navbar.Collapse>
+             {user && <Nav.Link><FaUserCircle /></Nav.Link>}
             {
                 user?<Link to=''><Button variant="outline-success">Logout</Button></Link>:
                 <Link to='/login'><Button variant="outline-success">Login</Button></Link>
