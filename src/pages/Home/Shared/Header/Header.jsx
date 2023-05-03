@@ -16,9 +16,9 @@ const Header = () => {
       .catch((error) => {});
     }
     return (
-             <Navbar bg="light" expand="lg">
-      <Container fluid>
-        <Link href="" className='fs-4 fw-bold'><span className=''>Italian</span> <span className='text-info'>Food Forever</span></Link>
+             <Navbar bg="light" expand="lg" className='p-5'>
+      <Container >
+        <Link to='/' className='fs-2 fw-bold text-decoration-none'><span className='text-black'>Italian</span> <span className='text-info'>Food Forever</span></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -26,8 +26,8 @@ const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Link to='/'>Home</Link>
-            <Link to='/blog'>Blog</Link>
+            <Link className='text-decoration-none text-black me-3' to='/'>Home</Link>
+            <Link className='text-decoration-none text-black ' to='/blog'>Blog</Link>
           </Nav>
        
         </Navbar.Collapse>

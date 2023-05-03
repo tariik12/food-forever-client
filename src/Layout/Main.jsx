@@ -6,12 +6,14 @@ import Footer from '../pages/Home/Shared/Footer/Footer';
 
 const Main = () => {
     return (
-        <Container>
+        <>
           <Header></Header>
-           <Outlet></Outlet>
+          <Container>
+          <Outlet></Outlet>
+          </Container>
            <Footer></Footer>
            
-        </Container>
+        </>
     );
 };
 
