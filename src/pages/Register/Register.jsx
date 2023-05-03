@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
 
-const {createUser,updateProfileUser} = useContext(AuthContext)
+const {createUser,updateProfileUser,handleGoogleProvider} = useContext(AuthContext)
 
 const handleRegister = event =>{
     event.preventDefault()
@@ -63,7 +63,7 @@ const handleRegister = event =>{
         
       </Form>
         <Card.Text className='text-center'>Or  </Card.Text>
-      <Button className='w-100 mb-4' variant="info" type="submit">
+      <Button className='w-100 mb-4' variant="info" onClick={handleGoogleProvider}>
           Google
         </Button>
         <Button className='w-100' variant="info" type="submit">

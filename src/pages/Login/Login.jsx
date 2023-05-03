@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthProvider';
  
 
 const Login = () => {
-  const {loginUser} = useContext(AuthContext)
+  const {loginUser, handleGoogleProvider,handleGithubProvider} = useContext(AuthContext)
   const [accept,setAccept] = useState(false);
 
   const handleAccept = event =>{
@@ -59,10 +59,10 @@ const Login = () => {
         
       </Form>
         <Card.Text className='text-center'>Or  </Card.Text>
-      <Button className='w-100 mb-4' variant="info" type="submit">
+      <Button className='w-100 mb-4' variant="info" onClick={handleGoogleProvider}>
           Google
         </Button>
-        <Button className='w-100' variant="info" type="submit">
+        <Button onClick={handleGithubProvider} className='w-100' variant="info" type="submit">
           GitHub
         </Button>
         </Card>

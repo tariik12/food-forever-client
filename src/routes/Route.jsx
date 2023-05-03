@@ -18,7 +18,7 @@ const router = createBrowserRouter ([
             {
                 path:'/',
                 element:<Home></Home>,
-                loader:() => fetch('http://localhost:5000/chefs/')
+                loader:() => fetch('https://food-forever-server-tariik12.vercel.app/chefs/')
             },
             {
                 path:'/blog',
@@ -46,7 +46,7 @@ const router = createBrowserRouter ([
             {
                 path:':id',
                 element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-                loader:({params}) =>fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader:({params}) =>fetch(`https://food-forever-server-tariik12.vercel.app/chefs/${params.id}`)
             }
         ]
     }

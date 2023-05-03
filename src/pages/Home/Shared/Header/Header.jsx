@@ -33,7 +33,7 @@ const Header = () => {
         </Navbar.Collapse>
              {user && <Nav.Link><FaUserCircle /></Nav.Link>}
             {
-                user?<Link onClick={handleLogout} ><Button variant="outline-success">Logout</Button></Link>:
+                user?<Link onClick={handleLogout} to='/' ><Button variant="outline-success">Logout</Button></Link>:
                 <Link to='/login'><Button variant="outline-success">Login</Button></Link>
             }
       </Container>
