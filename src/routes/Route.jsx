@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import Blog from "../pages/Home/Home/Blog/Blog";
 import PrivateRoute from "./PrivateRoute";
 import TermsAndCondition from "../pages/Home/Shared/TermsAndCondition/TermsAndCondition";
+import Categories from "../pages/Home/Categories/Categories";
 
 
 const router = createBrowserRouter ([
@@ -36,6 +37,10 @@ const router = createBrowserRouter ([
                 path:'/terms',
                 element:<TermsAndCondition></TermsAndCondition>
 
+            },
+            {
+                path:'/categories',
+                element:<Categories></Categories>
             }
         ]
     },

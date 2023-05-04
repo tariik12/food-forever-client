@@ -1,44 +1,56 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { FaFacebookSquare,FaInstagramSquare,FaUtensils,FaUserTie,FaEnvelopeOpenText, FaRegistered } from "react-icons/fa";
+import { Col, Container, Nav, Row } from 'react-bootstrap';
+import { FaFacebookSquare,FaInstagramSquare,FaUtensils,FaUserTie,FaWarehouse,FaTelegramPlane, FaRegistered } from "react-icons/fa";
 import {HiLogin,HiLibrary,HiOutlineViewGridAdd, HiOutlinePhoneMissedCall } from "react-icons/hi";
-import { Link } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 
 const Footer = () => {
+
+    const navLinkStyles = ({isActive}) =>{
+        return{
+            fontWeight: isActive?'700':'normal',
+            fontSize: isActive? '30px' : '28px'
+        }
+    }
     return (
     
-         <div  className=" bg-black text-white py-5">
+         <div  className=" bg-dark text-white py-5">
          
          
-        <Container >
+        <Container className='text-white' >
 
         <h1 className='text-center'>ITALIAN <span className='text-info' >FOOD FOREVER</span></h1>
-        <Row sm={1} md={3} className='py-5 mx-auto border ' >
-            <Col>
-            <Link className='text-decoration-none text-white fw-bold fs-4  ms-3' to='/'><FaEnvelopeOpenText className='' style={{ width: '50px', height:'40px' }} /> Home</Link> <br />
-            <Link className='text-decoration-none text-white fw-bold fs-4 ms-3' to='/login'><HiLogin style={{ width: '50px', height:'40px' }} /> Login</Link> <br />
-                <Link className='text-decoration-none text-white fw-bold fs-4 ms-3' to='/register'><FaRegistered  style={{ width: '50px', height:'40px' }}/> Register</Link> <br />
-                <Link className='text-decoration-none text-white fw-bold fs-4 ms-3' to='/register'> <HiOutlinePhoneMissedCall style={{ width: '50px', height:'40px' }} /> Contact</Link> <br />
+        <Row sm={2} md={3} className='py-5 mx-auto ' >
+            <Col className='m-5' >
+            <Nav className='d-flex flex-column'>
+            <NavLink style={navLinkStyles} className='text-decoration-none text-info me-3' to='/'> <FaWarehouse style={{ width: '50px', height:'40px' }} /> Home</NavLink>
+            
+            <NavLink style={navLinkStyles} className='text-decoration-none text-info ' to='/login'><HiLogin style={{ width: '50px', height:'40px' }} /> Login</NavLink>
+            <NavLink style={navLinkStyles} className='text-decoration-none text-info ' to='/register'><FaRegistered  style={{ width: '50px', height:'40px' }}/> Register</NavLink>
+            <NavLink style={navLinkStyles} className='text-decoration-none text-info ' to='/register'> <HiOutlinePhoneMissedCall style={{ width: '50px', height:'40px' }} /> Contact</NavLink>
+          </Nav>  
             </Col>
-            <Col>
-            <FaFacebookSquare  style={{ width: '50px', height:'40px' }}/>
-                <FaInstagramSquare  style={{ width: '50px', height:'40px' }}/>
+            <Col className=' d-flex my-5 '>   
+             <Nav className=' mx-auto p-2'>
+             <NavLink style={navLinkStyles} className='text-decoration-none text-info me-3   ' to=''><FaFacebookSquare  className=' mx-auto text-info' style={{ width: '50px', height:'40px' }}/></NavLink>
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-3  ' to=''><FaInstagramSquare   className=' mx-auto' style={{ width: '50px', height:'40px'}}/></NavLink>
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-3 ' to='/'><FaTelegramPlane  className=' mx-auto' style={{ width: '50px', height:'40px' }}/></NavLink>
+             </Nav>
             </Col>
-            <Col className=' border'>
-                <Link className='text-decoration-none text-white fw-bold fs-4  border mx-auto' to='/'><HiOutlineViewGridAdd style={{ width: '50px', height:'40px' }} /> Italy</Link> <br />
-                <Link className='text-decoration-none text-white fw-bold fs-4 ms-3' to='/register'> <HiLibrary style={{ width: '50px', height:'40px' }} />blog</Link> <br />
-                <Link className='text-decoration-none text-white fw-bold fs-4 ms-3' to='/register'><FaUserTie  style={{ width: '50px', height:'40px' }}/> Chef</Link> <br />
-                <Link className='text-decoration-none text-white fw-bold fs-4 ms-3' to='/register'><FaUtensils  style={{ width: '50px', height:'40px' }}/> Recipe</Link> <br />
-            </Col>
+            <Col >
+                <Nav className=' d-flex mt-5 flex-column' >
 
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-5 pe-1 ms-auto ' to='/italy'><HiOutlineViewGridAdd style={{ width: '50px', height:'40px' }} /> Italy</NavLink>
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-5 ms-auto ' to='/blog'><HiLibrary style={{ width: '50px', height:'40px' }} /> Blog</NavLink>
+
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-5 ms-auto' to='/chef'><FaUserTie  style={{ width: '50px', height:'40px' }}/> Chef</NavLink>
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-4 ms-auto' to='/categories'><FaUtensils  style={{ width: '50px', height:'40px' }}/> Recipe</NavLink>
+                </Nav>
+            </Col>
         </Row>
-            <div >
-                
-                
-            </div>
-            <div>
-               
-            </div>
+                <div>
+                    <hr />
+                </div>
         </Container>
          
          </div>

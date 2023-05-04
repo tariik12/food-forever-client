@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Recipes from '../../Recipes/Recipes';
+import { HiArrowRight } from "react-icons/hi";
+import Marquee from "react-fast-marquee";
 const ViewDetails = () => {
     const {id} = useParams()
     console.log(id)
@@ -12,38 +14,62 @@ const ViewDetails = () => {
     return (
         <Container className='mt-5'>
           <Card>
-           <Row xs={1} md={2} className="g-4">
-        <Col>
+          
+        
             <Card.Img variant="top" src={image_url} />
           
-        </Col>
-        <Col>
+        
             <Card.Body>
-              <Card.Title>Name: {chef_name}</Card.Title>
+              <Card.Title><strong>Name:</strong> {chef_name}</Card.Title>
               <Card.Text>
-              Bio Data: {bio_data}
+              <strong>Bio Data:</strong> {bio_data}
               </Card.Text>
               <Card.Text>
-               Experience: {experience}
+               <strong>Experience: </strong>{experience}
               </Card.Text>
+              <Card.Text className='d-flex   justify-content-evenly '>
+                <Card.Text className='d-flex flex-column align-items-end'>
+                   <strong className='pe-5 fs-4 '> Explore Recipes :</strong>
+                    <HiArrowRight style={{width:'40px', height:'50px'}} className='mt-3 text-info' />
+                </Card.Text>
+              <Card.Text className='fw-bold'>
               {
-                    recipes_name.map((rec,index) =><ListGroup.Item key={index}>{rec}</ListGroup.Item>)
+                    recipes_name.slice(0,4).map((rec,index) =><ListGroup.Item className=''  key={index}>{rec}</ListGroup.Item>)
                 }
-            <Card.Footer className='d-flex'>
+              </Card.Text>
+             
+             
+              <Card.Text className='fw-bold'>
+              {
+                    recipes_name.slice(4,8).map((rec,index) =><ListGroup.Item className='' key={index}>{rec}</ListGroup.Item>)
+                }
+              </Card.Text>
+              </Card.Text>
+             
+             
+              </Card.Body>
+            <Card.Footer className='d-flex p-4'>
             <Card.Text>
             jhd;
               </Card.Text>
            {total_likes}
             </Card.Footer>
-            </Card.Body>
-        </Col>
-         </Row>
+            
+        
           </Card>
 
-          <Row xs={1} md={3} className="g-4 mt-5">
+         <Container>
+         <Marquee speed={200} >
 
-            {recipes.map((da,index)=><Recipes da={da} key={index}></Recipes>)}
-            </Row>
+<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love</h1>
+<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love</h1>
+<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love</h1>
+</Marquee>
+         <Row xs={1} md={3} className="g-4 mt-5">
+
+{recipes.map((da,index)=><Recipes da={da} key={index}></Recipes>)}
+</Row>
+         </Container>
         </Container>
     );
 };

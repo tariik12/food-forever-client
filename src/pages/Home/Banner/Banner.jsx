@@ -2,11 +2,12 @@ import React from 'react';
 import Lottie from "lottie-react";
 
 import banner from "../../../assets/recipe_animation.json"
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 
 const Banner = () => {
     return (
-        <Row xs={1} md={2} className="g-4">
+        <Container>
+            <Row xs={1} md={2} className="g-4">
         <Col>
             <Card.Body className='mt-5 w-75 '>
             <Card.Title>
@@ -22,7 +23,9 @@ const Banner = () => {
         <Col>
           <Lottie className='' animationData={banner} loop={true} />
         </Col>
-    </Row>);
+    </Row>
+        </Container>
+    );
         
 };
 

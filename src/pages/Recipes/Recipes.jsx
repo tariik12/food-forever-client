@@ -1,10 +1,15 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 
+import { Rating } from '@smastrom/react-rating'
+
+import '@smastrom/react-rating/style.css'
+
 
 const Recipes = ({da}) => {
   console.log(da)
-  const {ingredients,recipe_name,image_url  } =da
+  const {ingredients,recipe_name,image_url,rating,total_likes} =da
+  console.log(da)
 
     return (
         <Col>
@@ -20,11 +25,16 @@ const Recipes = ({da}) => {
             
                 
             
-            <Card.Text className='d-flex justify-content-between align-items-center'>
-             {/* {total_likes} */}
-             <Button variant="info">Favorite Recipe</Button>
-            </Card.Text>
           </Card.Body>
+           <Card.Footer className='d-flex justify-content-between align-items-center'>
+             <Button variant="info">Favorite Recipe</Button>
+           <Card.Text className='d-flex align-items-center mt-3' >
+             {/* {total_likes} */}
+             <Rating style={{ maxWidth: 150 }} className='me-2' value={rating} readOnly />
+             <span>{rating?.number}</span>
+            </Card.Text>
+            <Card.Text>{total_likes}</Card.Text>
+           </Card.Footer>
         </Card>
       </Col>
     );
