@@ -3,14 +3,20 @@ import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Recipes from '../../Recipes/Recipes';
 import { HiArrowRight } from "react-icons/hi";
+import { Rating } from '@smastrom/react-rating'
 import Marquee from "react-fast-marquee";
+import { HiOutlineHeart } from "react-icons/hi";
+import '@smastrom/react-rating/style.css'
+
 const ViewDetails = () => {
     const {id} = useParams()
     
     const chefDetails = useLoaderData()
     
     const {chef_Details,recipes} = chefDetails;
-    const {bio_data,chef_name,image_url,recipes_name,total_likes,  experience} =chef_Details
+    console.log(recipes[0].rating.number
+      )
+    const {bio_data,chef_name,image_url,recipes_name,total_likes,  experience} =chef_Details;
     return (
         <Container className='mt-5'>
           <Card>
@@ -48,12 +54,18 @@ const ViewDetails = () => {
              
              
               </Card.Body>
-            <Card.Footer className='d-flex p-4'>
-            <Card.Text>
-            jhd;
-              </Card.Text>
-           {total_likes}
-            </Card.Footer>
+              <Card.Footer >
+            <Card.Text className='d-flex justify-content-between align-items-center'>
+            <Card.Text className='d-flex align-items-center mt-3' >
+             {/* {total_likes} */}
+             <Rating style={{ maxWidth: 150 }} className='me-2'  value={(recipes[0]?.rating?.number)} readOnly />
+             <span>{recipes[0]?.rating?.number}</span>
+            </Card.Text>
+            <Card.Text className='d-flex align-items-center '><HiOutlineHeart style={{height:'40px', width:'50px'}} className='me-2'/>  {total_likes}</Card.Text>
+            </Card.Text>
+           
+             
+           </Card.Footer>
             
         
           </Card>
@@ -65,7 +77,7 @@ const ViewDetails = () => {
 <h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love Recipe</h1>
 <h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love Recipe</h1>
 </Marquee>
-         <Row xs={1} md={3} className="g-4 mt-5">
+         <Row xs={1} md={2} className="g-4 mt-5">
 
 {recipes.map((da,index)=><Recipes da={da} key={index}></Recipes>)}
 </Row>

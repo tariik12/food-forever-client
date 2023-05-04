@@ -16,7 +16,7 @@ const Chefs = ({da}) => {
                 </Card.Text>
                 <strong>Explore Recipes :</strong>
                 {
-                    recipes.slice(0,4).map((rec,index) =><ListGroup.Item key={index}>{rec}</ListGroup.Item>)
+                    recipes.slice(0,3).map((rec,index) =><ListGroup.Item key={index}>{rec}</ListGroup.Item>)
                 }
                
               </Card.Body>
