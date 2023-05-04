@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
-
+import { toast } from 'react-toastify';
 import { Rating } from '@smastrom/react-rating'
-
+import { HiOutlineHeart } from "react-icons/hi";
 import '@smastrom/react-rating/style.css'
 
 
 const Recipes = ({da}) => {
-  console.log(da)
+  
+  const [Favorite, SetFavorite] = useState(true)
   const {ingredients,recipe_name,image_url,rating,total_likes} =da
-  console.log(da)
+  
+  const handleFavorite = () =>{
+ 
+    toast('🦄 Wow added Favorite!', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    SetFavorite(false)
+
+  }
 
     return (
         <Col>
@@ -26,14 +42,17 @@ const Recipes = ({da}) => {
                 
             
           </Card.Body>
-           <Card.Footer className='d-flex justify-content-between align-items-center'>
-             <Button variant="info">Favorite Recipe</Button>
-           <Card.Text className='d-flex align-items-center mt-3' >
+           <Card.Footer >
+            <Card.Text className='d-flex justify-content-between align-items-center'>
+            <Card.Text className='d-flex align-items-center mt-3' >
              {/* {total_likes} */}
-             <Rating style={{ maxWidth: 150 }} className='me-2' value={rating} readOnly />
+             <Rating style={{ maxWidth: 150 }} className='me-2'  value={Math.round(rating?.number)} readOnly />
              <span>{rating?.number}</span>
             </Card.Text>
-            <Card.Text>{total_likes}</Card.Text>
+            <Card.Text className='d-flex align-items-center '><HiOutlineHeart style={{height:'40px', width:'50px'}} className='me-2'/>  {total_likes}</Card.Text>
+            </Card.Text>
+           
+             <Button onClick={handleFavorite} className='w-100' variant="info" disabled={!Favorite}>Favorite Recipe</Button>
            </Card.Footer>
         </Card>
       </Col>

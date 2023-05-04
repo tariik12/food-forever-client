@@ -9,12 +9,14 @@ import Blog from "../pages/Home/Home/Blog/Blog";
 import PrivateRoute from "./PrivateRoute";
 import TermsAndCondition from "../pages/Home/Shared/TermsAndCondition/TermsAndCondition";
 import Categories from "../pages/Home/Categories/Categories";
+import Error from "../Error/Error";
 
 
 const router = createBrowserRouter ([
     {
         path:'/',   
         element:<Main></Main>,
+        errorElement:<Error></Error>,
         children:[
             {
                 path:'/',

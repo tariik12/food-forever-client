@@ -61,9 +61,9 @@ const ViewDetails = () => {
          <Container>
          <Marquee speed={200} >
 
-<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love</h1>
-<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love</h1>
-<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love</h1>
+<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love Recipe</h1>
+<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love Recipe</h1>
+<h1 className='fs-1 font-bold  p-5 mx-auto text-center  text-info'>You'll Also Love Recipe</h1>
 </Marquee>
          <Row xs={1} md={3} className="g-4 mt-5">
 
