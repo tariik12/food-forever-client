@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Card, Container, Nav, Navbar } from 'react-bootstrap';
 import {  NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../../provider/AuthProvider';
-import { FaUserCircle } from 'react-icons/fa';
+
 
 const Header = () => {
     const {user,logout} = useContext(AuthContext) ;
-   
+ 
+
+ 
     const navLinkStyles = ({isActive}) =>{
       return{
           fontWeight: isActive?'bold':'normal',
@@ -37,7 +39,8 @@ const Header = () => {
           </Nav>
        
         </Navbar.Collapse>
-             {user && <Nav.Link><FaUserCircle style={{ width: '50px', height:'40px' }} /></Nav.Link>}
+             {user && <Card.Img className='rounded-circle border-info me-3' style={{height:'40px' ,width:'50px'}}  variant="top" title={user?.displayName} alt={user?.displayName} src={user?.photoURL} />  }
+             
             {
                 user?<NavLink onClick={handleLogout} to='/' ><Button variant="outline-info">Logout</Button></NavLink>:
                 <NavLink to='/login'><Button variant="outline-info">Login</Button></NavLink>

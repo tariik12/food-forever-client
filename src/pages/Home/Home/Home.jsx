@@ -9,7 +9,7 @@ import Marquee from "react-fast-marquee";
 
 const Home = () => {
             const data = useLoaderData();
-          console.log(data)
+
             
     return (
         <>

@@ -2,40 +2,68 @@ import React, { useContext, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { toast } from 'react-toastify';
  
 
 const Login = () => {
   const {loginUser, handleGoogleProvider,handleGithubProvider} = useContext(AuthContext)
   const [accept,setAccept] = useState(false);
+ 
 
   const handleAccept = event =>{
     setAccept(event.target.checked)
   }
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location)
   const from = location?.state?.from?.pathname || '/'
   const handleLogin = event =>{
     event.preventDefault()
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+
+
     loginUser(email,password)
     .then((userCredential) => {
       const user = userCredential.user;
+      
+      toast('Login Success!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       navigate(from, {replace:true})
-      console.log(user)
+      event.target.reset()
+
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode,errorMessage)
+    
+      toast.error(`${errorMessage}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        })
+      
+      
+      
     });
   }
     return (
         <Card className='container mx-auto m-5 p-5 w-50 '>
             <Card.Title className='text-center'>Welcome! Please Login to continue.</Card.Title>
 
+          
             <Form onSubmit={handleLogin}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email</Form.Label>
@@ -59,12 +87,12 @@ const Login = () => {
         
       </Form>
         <Card.Text className='text-center'>Or  </Card.Text>
-      <Button className='w-100 mb-4' variant="info" onClick={handleGoogleProvider}>
+      <Link onClick={handleGoogleProvider} to='/' ><Button className='w-100 mb-4' variant="info"   >
           Google
-        </Button>
-        <Button onClick={handleGithubProvider} className='w-100' variant="info" type="submit">
+        </Button></Link>
+       <Link > <Button onClick={handleGithubProvider} className='w-100' variant="info" type="submit">
           GitHub
-        </Button>
+        </Button></Link>
         </Card>
     );
 };

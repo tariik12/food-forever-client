@@ -1,12 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
 
-const {createUser,updateProfileUser,handleGoogleProvider} = useContext(AuthContext)
+const {createUser,updateProfileUser} = useContext(AuthContext)
+const [accept,setAccept] = useState(false);
 
+const handleAccept = event =>{
+  setAccept(event.target.checked)
+}
 const handleRegister = event =>{
     event.preventDefault()
     const form = event.target;
@@ -14,17 +19,99 @@ const handleRegister = event =>{
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,photo,email,password)
+    
+    if(!/(?=.*?[A-Z])/.test(password)){
+        return toast.error('At least one upper case English letter!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+    else if(!/(?=.*?[a-z])/.test(password)){
+        return toast.error('At least one lower case English letter!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+    else if(!/(?=.*?[0-9])/.test(password)){
+        return toast.error('At least one digit!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+    else if(!/(?=.*?[#?!@$%^&*-])/.test(password)){
+        return toast.error('At least one special character!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
+    else if(!/.{8,}/.test(password)){
+        return toast.error('Minimum eight in length!', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+    }
     createUser(email,password)
     .then((userCredential) => {
       const user = userCredential.user;
       updateProfileUser(name,photo)
-      console.log(user)
+      toast('Register Success!', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+      event.target.reset()
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode,errorMessage)
+    
+      toast.error(`${errorMessage}`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        })
+      
+      
+      
     });
 
 }
@@ -32,7 +119,9 @@ const handleRegister = event =>{
     return (
         <Card className='container mx-auto m-5 p-5 w-50 '>
             <Card.Title className='text-center'>Welcome! Please Register to continue.</Card.Title>
-
+              <div>      
+        
+              </div>
             <Form onSubmit={handleRegister}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Name</Form.Label>
@@ -52,7 +141,7 @@ const handleRegister = event =>{
           <Form.Control type="password" name='password' placeholder="Please Enter Your Password" required />
         </Form.Group>
         <Form.Group className="mb-3 d-flex justify-content-between" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+        <Form.Check type="checkbox" onClick={handleAccept} label={<>Accept <Link to='/terms'>terms and conditions</Link></>} />
           <Form.Text className="text-muted">
           Already member? <Link to='/login' className='text-decoration-none text-info'>Login here.</Link> 
           </Form.Text>
@@ -62,13 +151,6 @@ const handleRegister = event =>{
         </Button> 
         
       </Form>
-        <Card.Text className='text-center'>Or  </Card.Text>
-      <Button className='w-100 mb-4' variant="info" onClick={handleGoogleProvider}>
-          Google
-        </Button>
-        <Button className='w-100' variant="info" type="submit">
-          GitHub
-        </Button>
         </Card>
     );
 };

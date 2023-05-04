@@ -46,7 +46,7 @@ const Recipes = ({da}) => {
             <Card.Text className='d-flex justify-content-between align-items-center'>
             <Card.Text className='d-flex align-items-center mt-3' >
              {/* {total_likes} */}
-             <Rating style={{ maxWidth: 150 }} className='me-2'  value={Math.round(rating?.number)} readOnly />
+             <Rating style={{ maxWidth: 150 }} className='me-2'  value={(rating?.number)} readOnly />
              <span>{rating?.number}</span>
             </Card.Text>
             <Card.Text className='d-flex align-items-center '><HiOutlineHeart style={{height:'40px', width:'50px'}} className='me-2'/>  {total_likes}</Card.Text>

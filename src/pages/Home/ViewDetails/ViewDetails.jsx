@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Recipes from '../../Recipes/Recipes';
@@ -6,9 +6,9 @@ import { HiArrowRight } from "react-icons/hi";
 import Marquee from "react-fast-marquee";
 const ViewDetails = () => {
     const {id} = useParams()
-    console.log(id)
+    
     const chefDetails = useLoaderData()
-    console.log(chefDetails)
+    
     const {chef_Details,recipes} = chefDetails;
     const {bio_data,chef_name,image_url,recipes_name,total_likes,  experience} =chef_Details
     return (

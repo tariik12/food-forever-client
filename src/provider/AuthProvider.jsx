@@ -12,9 +12,11 @@ const AuthProvider = ({children}) => {
     const [loading,setLoading] = useState(true)
     
     const handleGoogleProvider =() =>{
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     const handleGithubProvider =() =>{
+        setLoading(true)
         return signInWithPopup(auth, githubProvider)
     }
     const createUser = (email,password) =>{
@@ -40,7 +42,7 @@ const AuthProvider = ({children}) => {
     useEffect (() =>{
       const unsubscribe =  onAuthStateChanged(auth, loggedUser => {
           setLoading(false)
-            console.log('loggedUser in user in side in state', loggedUser)
+         
             setUser(loggedUser)
           })
           return () =>{
