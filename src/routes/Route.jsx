@@ -10,7 +10,6 @@ import PrivateRoute from "./PrivateRoute";
 import TermsAndCondition from "../pages/Home/Shared/TermsAndCondition/TermsAndCondition";
 import Categories from "../pages/Home/Categories/Categories";
 import Error from "../Error/Error";
-import MyComponent from "../MyComponent/MyComponent";
 import Blog from "../pages/Home/Home/Blog/Blog";
 
 
@@ -29,10 +28,6 @@ const router = createBrowserRouter ([
             {
                 path:'/login',
                 element:<Login></Login>
-            },
-            {
-                path:'/compo',
-                element:<MyComponent />
             },
             {
                 path:'/register',

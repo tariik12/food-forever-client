@@ -5,16 +5,15 @@ import Header from '../pages/Home/Shared/Header/Header';
 import Footer from '../pages/Home/Shared/Footer/Footer';
 
 const Main = () => {
-    return (
-        <>
-          <Header></Header>
-          <Container>
-          <Outlet></Outlet>
-          </Container>
-           <Footer></Footer>
-           
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <Container>
+        <Outlet />
+      </Container>
+      <Footer />
+    </>
+  );
 };
 
 export default Main;
