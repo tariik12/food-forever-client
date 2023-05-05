@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 import { HiArrowRight,  } from "react-icons/hi";
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const Categories = () => {
-
+  const { loading } = useContext(AuthContext);
   const [chefLife, setChefLife] = useState([])
   const [showAll, setShowAll] = useState(false)
 
@@ -17,6 +18,9 @@ const Categories = () => {
   .then(data =>setChefLife(data))
   .catch(error =>console.log(error))
   },[])
+  if(!chefLife){
+    loading(true)
+  }
   return (
     <div className='w-100'>
     <Row xs={1} md={3}  className="g-4 w-100 my-5">

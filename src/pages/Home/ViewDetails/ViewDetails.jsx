@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
 import Recipes from '../../Recipes/Recipes';
@@ -7,11 +7,15 @@ import { Rating } from '@smastrom/react-rating'
 import Marquee from "react-fast-marquee";
 import { HiOutlineHeart } from "react-icons/hi";
 import '@smastrom/react-rating/style.css'
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const ViewDetails = () => {
   const { id } = useParams();
-
+  const { loading } = useContext(AuthContext);
   const chefDetails = useLoaderData();
+  if(!chefDetails){
+    loading(true)
+  }
   const { chef_Details, recipes } = chefDetails;
   const {
     bio_data,

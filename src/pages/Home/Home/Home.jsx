@@ -8,10 +8,15 @@ import Categories from '../Categories/Categories';
 import Chefs from '../Chefs/Chefs';
 import { AuthContext } from '../../../provider/AuthProvider';
 
+
 const Home = () => {
-  
+  const { loading } = useContext(AuthContext);
+
   const data = useLoaderData();
  
+  if(!data){
+    loading(true)
+  }
   return (
     <>
       <Banner />

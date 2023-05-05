@@ -24,6 +24,10 @@ const AboutItaly = () => {
   .catch(error =>console.log(error))
   },[loading])
 
+  if(!italianCookingLearn){
+  loading(true)
+  }
+
   return (
     <div className='mx-auto mt-5'>
       <Marquee speed={200}>
