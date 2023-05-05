@@ -2,7 +2,6 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { Container, Row } from 'react-bootstrap';
 import Marquee from 'react-fast-marquee';
-import { PDFDownloadLink } from '@react-pdf/renderer';
 import Banner from '../Banner/Banner';
 import AboutItaly from '../AboutItaly/AboutItaly';
 import Categories from '../Categories/Categories';
