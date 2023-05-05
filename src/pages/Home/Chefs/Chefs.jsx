@@ -10,7 +10,7 @@ const Chefs = ({ da }) => {
   return (
     <Col>
       <Card style={{ height: '40rem' }}>
-        <LazyLoad   threshold={0.95}>
+        <LazyLoad height={400}   threshold={0.95}>
           <Card.Img variant="top" style={{height:'18rem'}} src={image_url} />
         </LazyLoad>
           <Card.Title >{chef_name}</Card.Title>

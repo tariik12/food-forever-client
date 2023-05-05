@@ -12,10 +12,78 @@ const Login = () => {
     setAccept(event.target.checked);
   };
 
+
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || '/';
 
+
+  const handleGithubLocation = () =>{
+
+    handleGithubProvider()
+    .then((result) => {
+      const user = result.user;
+      toast.success('Login Success!', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+      navigate(from, { replace: true });
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      toast.error(errorMessage, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    });
+  
+  }
+  const handleGoogleLocation = () =>{
+  
+    handleGoogleProvider()
+    .then((result) => {
+      const user = result.user;
+
+      toast.success('Login Success!', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+      navigate(from, { replace: true });
+    })
+    .catch((error) => {
+      const errorMessage = error.message;
+      toast.error(errorMessage, {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      });
+    });
+  
+  }
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -89,13 +157,13 @@ const Login = () => {
 
       <Card.Text className="text-center">Or</Card.Text>
 
-      <Link onClick={handleGoogleProvider} to="/">
-        <Button className="w-100 mb-4" variant="info">
+      
+        <Button onClick={handleGoogleLocation } className="w-100 mb-4" variant="info">
           Google
         </Button>
-      </Link>
+     
 
-      <Button onClick={handleGithubProvider} className="w-100" variant="info" type="submit">
+      <Button onClick={handleGithubLocation} className="w-100" variant="info" type="submit">
         GitHub
       </Button>
     </Card>

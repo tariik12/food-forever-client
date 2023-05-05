@@ -14,7 +14,7 @@ const Blog = () => {
         </PDFDownloadLink>
       </div>
 
-      <Card className='p-4'>
+      <Card className='my-4 p-4'>
         <Card.Title>1. What is the differences between uncontrolled and controlled components?</Card.Title>
         <Card.Body>
           <Card.Text>
@@ -25,7 +25,7 @@ const Blog = () => {
         </Card.Body>
       </Card>
 
-      <Card className='p-4'>
+      <Card className='p-4 my-4'>
         <Card.Title>2. How to validate React props using PropTypes?</Card.Title>
         <Card.Body>
           <Card.Text>
@@ -34,7 +34,7 @@ const Blog = () => {
         </Card.Body>
       </Card>
 
-      <Card className='p-4'>
+      <Card className='p-4 my-4'>
         <Card.Title>3. How to validate React props using PropTypes?</Card.Title>
         <Card.Body>
           <Card.Text>
@@ -44,7 +44,7 @@ const Blog = () => {
         </Card.Body>
       </Card>
 
-      <Card className='p-4'>
+      <Card className='p-4 my-4'>
         <Card.Title>4. What is a custom hook, and why will you create a custom hook?</Card.Title>
         <Card.Body>
           <Card.Text>
