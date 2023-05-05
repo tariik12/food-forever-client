@@ -75,7 +75,7 @@ const ViewDetails = () => {
             <Card.Text className="d-flex align-items-center ">
               <HiOutlineHeart
                 style={{ height: "40px", width: "50px" }}
-                className="me-2"
+                className="me-2 text-info"
               />
               {total_likes}
             </Card.Text>

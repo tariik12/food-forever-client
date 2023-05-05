@@ -34,26 +34,26 @@ const Home = () => {
           ))}
         </Row>
       </Container>
-
-      <Container className='mt-5'>
-        <Marquee speed={200}>
+      <AboutItaly />
+      <div >
+        <Marquee className='mt-0 border border-danger' speed={200}>
           <h1 className='fs-1 font-bold p-5 mx-auto text-center text-info'>
-            Italian Best Delicious Recipes
+            Italian chef Life
           </h1>
           <h1 className='fs-1 font-bold p-5 mx-auto text-center text-info'>
-            Italian Best Delicious Recipes
+            Italian chef Life
           </h1>
           <h1 className='fs-1 font-bold p-5 mx-auto text-center text-info'>
-            Italian Best Delicious Recipes
+            Italian chef Life
           </h1>
         </Marquee>
 
         <Row xs={1} md={3} className='g-4'>
           <Categories />
         </Row>
-      </Container>
+      </div>
 
-      <AboutItaly />
+     
     </>
   );
 };

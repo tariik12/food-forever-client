@@ -1,30 +1,57 @@
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Card, Col, Container, Row } from 'react-bootstrap';
+import { HiArrowRight, HiOutlineHeart } from "react-icons/hi";
+import LazyLoad from 'react-lazy-load';
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 const AboutItaly = () => {
+
+  const [italianCookingLearn, setItalianCookingLearn] = useState([])
+console.log(italianCookingLearn)
+
+  useEffect(() =>{
+    fetch('https://food-forever-server-tariik12.vercel.app/italianCookingLearn')
+  .then(res => res.json())
+  .then(data =>setItalianCookingLearn(data))
+  .catch(error =>console.log(error))
+  },[])
+
   return (
-    <div className='my-4'>
-      <h1 className='text-center p-5'>ITALIAN COOKING SCHOOLS</h1>
-      <Card className='p-4'>
-        <Card.Body>
-          <Card.Text>
-            Would you like to learn more about traditional Italian cooking? Why not schedule your next vacation around a cooking school in Italy? There are many cooking schools available in regions across Italy, with varying prices and instructors. Here are just a few:
-
-            <br /><br />
-
-            - Chef Paolo Monti: Hotelier, Chef, and Self Styled Gourmet, will teach you how to prepare delicious gourmet Italian dishes in only a few minutes.
-
-            <br /><br />
-
-            - Badia a Coltibuono: This medieval Benedictine abbey in Tuscany is now a prestigious wine estate and cooking school. Two programs are offered: Tastes of Tuscany: A Gastronomic Sojourn in Chianti and Cooking Classes at Badia a Coltibuono. Guests stay in comfortable rooms and have access to various amenities.
-
-            <br /><br />
-
-            These are just a few examples of cooking schools in Italy. Whether you learn from famous Italian chefs or native Italians who want to share their passion for Italian cuisine, you're sure to have an unforgettable experience.
-          </Card.Text>
-        </Card.Body>
-      </Card>
+    <div>
+      <h1 className='text-center mt-5'>Italian Cocking Learn</h1>
+          <Row xs={1} md={3}  className="g-4 my-5 py-5 w-100 ">
+    {italianCookingLearn.map((_, idx) => (
+      <Col key={idx}>
+        <Card style={{ height:'40rem'}}>
+        <LazyLoad   threshold={0.95}>
+          <Card.Img style={{height:'20rem'}} variant="top" src={_.image_Link} />
+        </LazyLoad>
+        <Card.Text className=' ms-3 mt-3 mb-0 fs-4 fw-bold'>
+              Learn :<HiArrowRight
+              style={{ width: "30px", height: "40px" }}
+              className=" text-info"
+            />
+            </Card.Text>
+          <Card.Body>
+            <Card.Title><span> Instituted Name : </span> {_.school_name}</Card.Title>
+            <Card.Text>
+             <strong>Course : </strong> {_.course_name}
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer className='d-flex align-items-between mt-3'>
+            <Card.Text className='d-flex align-items-center mt-3 me-5'>
+              <Rating style={{ maxWidth: 150 }} className='me-2'  value={(_.rating)} readOnly />
+              <span>{_.rating}</span>
+            </Card.Text>
+              <HiOutlineHeart style={{height:'40px', width:'50px'}} className=' ms-5 text-info mt-2 '/>
+        </Card.Footer>
+        </Card>
+      </Col>
+    ))}
+  </Row>
     </div>
+    
   );
 };
 

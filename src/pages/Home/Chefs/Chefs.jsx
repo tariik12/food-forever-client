@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card, Col, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { HiOutlineThumbUp } from 'react-icons/hi';
+import { HiOutlineHeart } from 'react-icons/hi';
 import LazyLoad from 'react-lazy-load';
 
 const Chefs = ({ da }) => {
@@ -9,15 +9,15 @@ const Chefs = ({ da }) => {
 
   return (
     <Col>
-      <Card style={{ height: '600px' }}>
-        <LazyLoad height={762} width={400} threshold={0.95}>
-          <Card.Img variant="top" src={image_url} />
+      <Card style={{ height: '40rem' }}>
+        <LazyLoad   threshold={0.95}>
+          <Card.Img variant="top" style={{height:'18rem'}} src={image_url} />
         </LazyLoad>
+          <Card.Title >{chef_name}</Card.Title>
         <Card.Body>
-          <Card.Title>{chef_name}</Card.Title>
           <Card.Text>
             {experience.slice(0, 1)}
-            <Link className="text-decoration-none text-info" to="/recipes">
+            <Link className="text-decoration-none text-info" >
               ..Read more »
             </Link>
           </Card.Text>
@@ -34,7 +34,7 @@ const Chefs = ({ da }) => {
               </Button>
             </Link>
             <div className="me-5">
-              <HiOutlineThumbUp style={{ height: '40px', width: '50px' }} className="me-2" />
+              <HiOutlineHeart style={{ height: '40px', width: '50px' }} className="me-2 text-info" />
               {total_likes}
             </div>
           </Card.Text>

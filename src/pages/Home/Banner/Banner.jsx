@@ -7,22 +7,23 @@ import bannerAnimation from '../../../assets/recipe_animation.json';
 const Banner = () => {
   return (
     <Container>
-      <Row xs={1} md={2} className='g-4'>
-        <Col>
-          <Card.Body className='mt-5 w-75'>
-            <Card.Title className='fs-1 fw-bold'>
-              <span>experience the joy</span> <br />
-              <span>OF <span className='text-info'>ITALIAN CUISINE.</span></span>
+      <Row xs={1} md={1} className='g-4'>
+      <Col>
+          <Lottie className='' animationData={bannerAnimation} loop={true} />
+        </Col>
+        <Col >
+          <Card.Body className='text-center'>
+            <Card.Title className='fs-1 fw-bold '>
+              <span>Experience the joy</span> 
+              <span> OF <span className='text-info'>ITALIAN CUISINE.</span></span>
             </Card.Title>
             <Card.Text className='fs-4 mt-2'>
               The essence of Italian cooking today is simplicity. One uses the freshest seasonal ingredients and basic cooking techniques to simply enhance the natural flavor of the food.
             </Card.Text>
-            <Card.Link className='text-decoration-none text-info' href='#'>more about me »</Card.Link>
+            <Card.Link className='text-decoration-none text-info mb-5'>more about me »</Card.Link>
           </Card.Body>
         </Col>
-        <Col>
-          <Lottie className='' animationData={bannerAnimation} loop={true} />
-        </Col>
+        
       </Row>
     </Container>
   );
