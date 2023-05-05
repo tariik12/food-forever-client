@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { HiArrowRight, HiOutlineHeart } from "react-icons/hi";
 import LazyLoad from 'react-lazy-load';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
+import Marquee from 'react-fast-marquee';
+import { AuthContext } from '../../../provider/AuthProvider';
 
 const AboutItaly = () => {
-
+  const { loading } = useContext(AuthContext);
   const [italianCookingLearn, setItalianCookingLearn] = useState([])
   const [showAll, setShowAll] = useState(false)
 
@@ -20,11 +22,21 @@ const AboutItaly = () => {
   .then(res => res.json())
   .then(data =>setItalianCookingLearn(data))
   .catch(error =>console.log(error))
-  },[])
+  },[loading])
 
   return (
-    <div>
-      <h1 className='text-center mt-5'>Italian Cocking Learn</h1>
+    <div className='mx-auto mt-5'>
+      <Marquee speed={200}>
+          <h1 className='fs-1 font-bold pb-5 mx-auto text-center text-info'>
+            Italian Cooking Learn
+          </h1>
+          <h1 className='fs-1 font-bold p-5 mx-auto text-center text-info'>
+            This is Popular Learn  Institute
+          </h1>
+          <h1 className='fs-1 font-bold p-5 mx-auto text-center text-info'>
+           If you Want Learn Then Register Enrol Quickly
+          </h1>
+        </Marquee>
           <Row xs={1} md={3}  className="g-4 my-5 py-5 w-100 ">
     {italianCookingLearn.slice(0,showAll ? 9 : 3).map((_, idx) => (
       <Col key={idx}>

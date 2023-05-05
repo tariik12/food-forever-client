@@ -3,6 +3,8 @@ import { Col, Container, Nav, Row } from 'react-bootstrap';
 import { FaFacebookSquare,FaInstagramSquare,FaUtensils,FaUserTie,FaWarehouse,FaTelegramPlane, FaRegistered } from "react-icons/fa";
 import {HiLogin,HiLibrary,HiOutlineViewGridAdd, HiOutlinePhoneMissedCall } from "react-icons/hi";
 import {  NavLink } from 'react-router-dom';
+import footer from '../../../../assets/island.json';
+import Lottie from 'lottie-react';
 
 const Footer = () => {
     const navLinkStyles = ({ isActive }) => {
@@ -13,13 +15,13 @@ const Footer = () => {
     };
   
     return (
-      <div bg="" className="bg-secondary text-white py-5">
+      <div bg="" className="bg-secondary  text-white pt-5" >
         <Container className="text-white">
           <h1 className="text-center">
             ITALIAN <span className="text-info">FOOD FOREVER</span>
           </h1>
-          <Row sm={1} md={4} className=" ">
-            <Col className="m-5">
+          <Row xs={1} md={3} className=" ">
+            <Col className="">
               <Nav className="d-flex flex-column">
                 <NavLink
                   style={navLinkStyles}
@@ -88,7 +90,7 @@ const Footer = () => {
                 </NavLink>
               </Nav>
             </Col>
-            <Col className="m-5">
+            <Col className="">
               <Nav className="d-flex flex-column">
                 <NavLink
                   style={navLinkStyles}
@@ -108,15 +110,14 @@ const Footer = () => {
                   <HiLibrary style={{ width: '50px', height: '40px' }} /> Blog
                 </NavLink>
         
-                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-5 ms-auto' to='/chef'><FaUserTie  style={{ width: '50px', height:'40px' }}/> Chef</NavLink>
+                <NavLink style={navLinkStyles} className='text-decoration-none text-info me-5 ms-auto' to='/'><FaUserTie  style={{ width: '50px', height:'40px' }}/> Chef</NavLink>
                 <NavLink style={navLinkStyles} className='text-decoration-none text-info me-4 ms-auto' to='/categories'><FaUtensils  style={{ width: '50px', height:'40px' }}/> Recipe</NavLink>
                 </Nav>
             </Col>
         </Row>
-                <div>
-                    <hr />
-                </div>
+                
         </Container>
+                <Lottie className='text-dark '  animationData={footer} loop={true} />
          
          </div>
 

@@ -3,6 +3,7 @@ import { Button, Container } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import Header from '../pages/Home/Shared/Header/Header';
 import Footer from '../pages/Home/Shared/Footer/Footer';
+import {  BsSun ,BsBrightnessHigh } from "react-icons/bs";
 
 const Main = () => {
 const [dark, set_dark] =useState(false)
@@ -21,13 +22,14 @@ const handleLight =() =>{
   return (
     <div className={!dark?'bg-dark':'bg-white'} >
       <Header />
-      <div className=' d-flex justify-content-end me-5 mt-5'>
+      <div className=' d-flex justify-content-center me-5 my-5'>
        {
-        toggle ? <Button className='me-5 ' onClick={handleDark}>white</Button> :
-                <Button className='me-5 ' onClick={handleLight}>Dark</Button>
+        toggle ? < BsBrightnessHigh className='me-5 fs-1 fw-bold text-white'  onClick={handleDark}/> :< BsSun className='me-5 fs-1 fw-bold ' onClick={handleLight}/>
+                
        }   
    
-            
+   
+   
        
       </div>
       <Container>
