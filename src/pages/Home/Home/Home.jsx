@@ -6,6 +6,9 @@ import { Card, Container, Row } from 'react-bootstrap';
 import { useLoaderData } from 'react-router-dom';
 import Chefs from '../Chefs/Chefs';
 import Marquee from "react-fast-marquee";
+import React from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import MyDocument from '../../../MyComponent/MyComponent';
 
 const Home = () => {
             const data = useLoaderData();
@@ -42,6 +45,16 @@ const Home = () => {
             </Container>
           
             <AboutItaly></AboutItaly>
+
+            <div>
+      <PDFDownloadLink document={<MyDocument />} fileName="example.pdf">
+        {({ blob, url, loading, error }) =>
+          loading ? 'Loading document...' : 'Download now!'
+        }
+      </PDFDownloadLink>
+    </div>
+
+
         </>
     );
 };
