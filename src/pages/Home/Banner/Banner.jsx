@@ -6,7 +6,7 @@ import bannerAnimation from '../../../assets/recipe_animation.json';
 
 const Banner = () => {
   return (
-    <Container>
+    <Container className='text-info'>
       <Row xs={1} md={1} className='g-4'>
       <Col>
           <Lottie className='' animationData={bannerAnimation} loop={true} />

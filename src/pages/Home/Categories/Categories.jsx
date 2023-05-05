@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import { HiArrowRight,  } from "react-icons/hi";
 
 const Categories = () => {
 
   const [chefLife, setChefLife] = useState([])
+  const [showAll, setShowAll] = useState(false)
+
+    const handleShowAll =() =>{
+        setShowAll(true)
+    }
 
   useEffect(() =>{
     fetch('https://food-forever-server-tariik12.vercel.app/aboutChefLife')
@@ -13,8 +18,9 @@ const Categories = () => {
   .catch(error =>console.log(error))
   },[])
   return (
+    <div className='w-100'>
     <Row xs={1} md={3}  className="g-4 w-100 my-5">
-      {chefLife.map((_, idx) => (
+      {chefLife.slice(0,showAll ? 10 : 3).map((_, idx) => (
         <Col key={idx}>
           <Card style={{ height:'25rem'}}>
           <Card.Text className='text-center pt-5 fs-1 fw-bold'>
@@ -40,6 +46,13 @@ const Categories = () => {
         </Col>
       ))}
     </Row>
+    <div className='d-flex justify-content-center mb-4'>
+      {!showAll && <span onClick={handleShowAll}>
+
+      <Button  className='text-center border '>See More</Button>
+        </span>}
+      </div>
+ </div>
   );
 };
 

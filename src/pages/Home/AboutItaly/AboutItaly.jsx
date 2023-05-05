@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { HiArrowRight, HiOutlineHeart } from "react-icons/hi";
 import LazyLoad from 'react-lazy-load';
 import { Rating } from '@smastrom/react-rating'
@@ -8,7 +8,12 @@ import '@smastrom/react-rating/style.css'
 const AboutItaly = () => {
 
   const [italianCookingLearn, setItalianCookingLearn] = useState([])
-console.log(italianCookingLearn)
+  const [showAll, setShowAll] = useState(false)
+
+  const handleShowAll =() =>{
+      setShowAll(true)
+  }
+
 
   useEffect(() =>{
     fetch('https://food-forever-server-tariik12.vercel.app/italianCookingLearn')
@@ -21,7 +26,7 @@ console.log(italianCookingLearn)
     <div>
       <h1 className='text-center mt-5'>Italian Cocking Learn</h1>
           <Row xs={1} md={3}  className="g-4 my-5 py-5 w-100 ">
-    {italianCookingLearn.map((_, idx) => (
+    {italianCookingLearn.slice(0,showAll ? 9 : 3).map((_, idx) => (
       <Col key={idx}>
         <Card style={{ height:'40rem'}}>
         <LazyLoad   threshold={0.95}>
@@ -50,6 +55,12 @@ console.log(italianCookingLearn)
       </Col>
     ))}
   </Row>
+  <div className='d-flex justify-content-center mb-4'>
+      {!showAll && <span onClick={handleShowAll}>
+
+      <Button  className='text-center border '>See More</Button>
+        </span>}
+      </div>
     </div>
     
   );
