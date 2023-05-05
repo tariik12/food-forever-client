@@ -13,7 +13,7 @@ const Footer = () => {
     };
   
     return (
-      <div className="bg-dark text-white py-5">
+      <div bg="" className="bg-secondary text-white py-5">
         <Container className="text-white">
           <h1 className="text-center">
             ITALIAN <span className="text-info">FOOD FOREVER</span>
@@ -93,11 +93,11 @@ const Footer = () => {
                 <NavLink
                   style={navLinkStyles}
                   className="text-decoration-none text-info me-5 pe-1 ms-auto"
-                  to="/italy"
+                  to="/"
                 >
                   <HiOutlineViewGridAdd
                     style={{ width: '50px', height: '40px' }}
-                  />{' '}
+                  />
                   Italy
                 </NavLink>
                 <NavLink
